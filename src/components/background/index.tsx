@@ -1,5 +1,6 @@
 import { ImageBackground } from 'react-native';
 import { styles } from './styles';
+
 import backgroundImage from '../../assets/background-galaxy.png';
 
 interface BackgroundProps {
@@ -7,6 +8,7 @@ interface BackgroundProps {
 }
 
 export function Background({ children }: BackgroundProps) {
+    
     return (
         <ImageBackground
             source={backgroundImage}
