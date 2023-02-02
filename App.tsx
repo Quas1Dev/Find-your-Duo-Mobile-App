@@ -1,8 +1,17 @@
 import { StatusBar } from 'react-native';
 import { Background } from './src/components/background';
-
+import { useFonts, Inter_400Regular, Inter_600SemiBold, Inter_700Bold, Inter_900Black } from '@expo-google-fonts/inter';
+import Home from './src/screens/Home';
+import Loading from './src/components/Loading';
 
 export default function App() {
+  let [fontLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black,
+  });
+
   return (
     <Background>
       {/* Enable status bar at the top *1 */}
@@ -10,7 +19,8 @@ export default function App() {
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
-         />
+      />
+      {!fontLoaded ? <Home /> : <Loading />}
     </Background>
   );
 }
