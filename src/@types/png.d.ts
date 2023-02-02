@@ -4,9 +4,9 @@ declare module '*.png' {
     export default content;
 }
 
-
 /*
 Dev's comments
-1 - A module is a self-contained unit of code that exports some values, which can then be imported and used in another part of your code. Treating a .png file as a module, means 
+1 - A module is a self-contained unit of code that exports some values, which can then be imported and used in another part of your code. Treating a .png file as a module, allows us to define what type of
+data TS should assume that will be returned.
 */
 
