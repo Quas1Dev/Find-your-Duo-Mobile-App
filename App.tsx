@@ -1,16 +1,32 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, View, Text, TouchableOpacity, BackHandler } from 'react-native';
 import { Background } from './src/components/background';
 import { useFonts, Inter_400Regular, Inter_600SemiBold, Inter_700Bold, Inter_900Black } from '@expo-google-fonts/inter';
 import Home from './src/screens/Home';
 import Loading from './src/components/Loading';
+import { CloseAppBtn } from './src/components/CloseAppBtn';
 
 export default function App() {
-  let [fontLoaded] = useFonts({
+  let [fontLoaded, error] = useFonts({
     Inter_400Regular,
     Inter_600SemiBold,
     Inter_700Bold,
     Inter_900Black,
   });
+
+  if (error) {
+    console.error(error);
+    return (
+      <Background>
+        {/* Enable status bar at the top *1 */}
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        <CloseAppBtn />
+      </Background>
+    );
+  }
 
   return (
     <Background>
