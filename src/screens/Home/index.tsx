@@ -8,12 +8,16 @@ import { GAMES } from '../../utils/games';
 
 export default function Home() {
     return (
+        // Our screen main container
         <View style={styles.container}>
+            {/* Logo */}
             <Image source={logo} style={styles.logo} />
+            {/* Title and subtitle */}
             <Heading
                 title="Encontre seu duo"
                 subtitle="Selecione o game que deseja jogar..."
             />
+            {/* Ads list */}
             <FlatList
                 data={GAMES}
                 keyExtractor={item => item.id}
