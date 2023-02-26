@@ -8,9 +8,9 @@ import { THEME } from '../../theme';
 // Game card props
 export interface GameCardProps {
     id: string;
-    name: string;
-    ads: string;
-    cover: ImageSourcePropType;
+    title: string;
+    num_ads: string;
+    thumb: string;
 }
 
 interface Props extends TouchableOpacityProps {
@@ -22,16 +22,19 @@ export function GameCard({ data, ...rest }: Props) {
         // Creates a clickable area    
         <TouchableOpacity style={styles.container} {...rest}>
             {/* Background image */}
-            <ImageBackground style={styles.cover} source={data.cover}>
+            <ImageBackground
+                style={styles.cover}
+                source={{ uri: data.thumb }}
+            >
                 {/* Bottom gradient */}
                 <LinearGradient colors={THEME.COLORS.FOOTER} style={styles.footer}>
                     {/* Name of the game */}
                     <Text style={styles.name}>
-                        {data.name}
+                        {data.title}
                     </Text>
                     {/* Amount of ads */}
                     <Text style={styles.ads}>
-                        {data.ads} anúncios
+                        {data.num_ads} anúncios
                     </Text>
                 </LinearGradient>
             </ImageBackground>
