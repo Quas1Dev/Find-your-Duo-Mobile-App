@@ -1,6 +1,7 @@
 import { StatusBar, View, Text, TouchableOpacity, BackHandler } from 'react-native';
 import { Background } from './src/components/background';
 import { useFonts, Inter_400Regular, Inter_600SemiBold, Inter_700Bold, Inter_900Black } from '@expo-google-fonts/inter';
+import Routes from './src/routes';
 import Home from './src/screens/Home';
 import Loading from './src/components/Loading';
 import { CloseAppBtn } from './src/components/CloseAppBtn';
@@ -36,7 +37,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontLoaded ? <Home /> : <Loading />}
+      {fontLoaded ? <Routes/> : <Loading />}
     </Background>
   );
 }
