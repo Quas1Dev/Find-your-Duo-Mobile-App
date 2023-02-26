@@ -30,6 +30,7 @@ export default function App() {
   }
 
   return (
+    // Background *2
     <Background>
       {/* Enable status bar at the top *1 */}
       <StatusBar
@@ -51,4 +52,6 @@ Dev's comments
 We must specify this property to explicitly define the color for the "text" in the status bar; otherwise, the system would decide for the app. When the system decides, it may choose dark or a light color for the text. A dark color can fit well to our application if it offers a light background, but not for an app that offers a dark background. 
 
 The next two properties, backgroundColor and translucent are a mystery to me. Setting only the backgroound color will make the status bar completly white, than I needed to set transluced property.
+
+2 - The background is kept here to guarantee a background when loading routes.
 */
