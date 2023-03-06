@@ -9,7 +9,8 @@ export function AppRoutes() {
         <Navigator screenOptions={{
             headerShown: false,
             
-        }}>
+        }}
+        initialRouteName="home">
             <Screen name="home" component={Home} />
             <Screen name="game" component={Game} />
         </Navigator>

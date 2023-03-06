@@ -8,9 +8,15 @@ import { styles } from './styles';
 import { GAMES } from '../../utils/games';
 import api from '../../AxiosConfig/AxiosConfig';
 import { Background } from '../../components/background';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
     const [games, setGames] = useState<GameCardProps[]>([])
+    const navigation = useNavigation();
+
+    function handleGameClicked({ id, title, thumb }: GameCardProps) {
+        navigation.navigate('game')
+    }
     useEffect(() => {
         async function fetchGames() {
             try {
@@ -24,7 +30,7 @@ export default function Home() {
         }
         fetchGames()
     }, [])
-    console.log(games)
+
     return (
         <Background>
             {/* Our screen main container */}
@@ -40,7 +46,14 @@ export default function Home() {
                 <FlatList
                     data={games}
                     keyExtractor={item => item.id}
-                    renderItem={({ item }) => <GameCard data={item} />}
+                    renderItem={({ item }) => <GameCard data={item} onPress={() => {
+                        handleGameClicked({
+                            id: item.id,
+                            title: item.title, 
+                            thumb: item.thumb,
+                            num_ads: item.num_ads
+                        })
+                    }} />}
                     showsHorizontalScrollIndicator={false}
                     horizontal
                     contentContainerStyle={styles.contentList}
