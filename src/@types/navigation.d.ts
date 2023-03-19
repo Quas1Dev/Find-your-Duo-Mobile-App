@@ -1,3 +1,9 @@
+export interface GameParams {
+    id: string;
+    title: string;
+    thumb: string;
+}
+
 export declare global {
     namespace ReactNavigation {
         interface RootParamList {
