@@ -46,12 +46,8 @@ export default function Home() {
                     data={games}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => <GameCard data={item} onPress={() => {
-                        handleGameClicked({
-                            id: item.id,
-                            title: item.title, 
-                            thumb: item.thumb,
-                            num_ads: item.num_ads
-                        })
+                        const {id, title, thumb, num_ads} = item;
+                        handleGameClicked({ id, title, thumb, num_ads })
                     }} />}
                     showsHorizontalScrollIndicator={false}
                     horizontal
