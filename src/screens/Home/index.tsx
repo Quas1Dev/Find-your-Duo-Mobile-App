@@ -15,13 +15,12 @@ export default function Home() {
     const navigation = useNavigation();
 
     function handleGameClicked({ id, title, thumb }: GameCardProps) {
-        navigation.navigate('game')
+        navigation.navigate('game', {id, title, thumb}) 
     }
     useEffect(() => {
         async function fetchGames() {
             try {
                 const response = await api.get<GameCardProps[]>('/games')
-                console.log(response.data)
                 setGames(response.data);
             } catch (err: any) {
                 console.error("Error:", err.message);
