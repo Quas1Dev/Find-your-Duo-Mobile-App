@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { Background } from '../../components/background';
 import { styles } from './styles';
 import { GameParams } from '../../@types/navigation';
@@ -12,12 +12,17 @@ import { Heading } from '../../components/Heading';
 export default function Game() {
   const route = useRoute();
   const game = route.params as GameParams;
+  const navigator = useNavigation();
+
+  function handleGoBack() {
+    navigator.goBack();
+  }
 
   return (
     <Background>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => { handleGoBack() }}>
             <Entypo
               name="chevron-thin-left"
               color={THEME.COLORS.CAPTION_300}
@@ -28,11 +33,17 @@ export default function Game() {
           <Image
             source={logoImg}
             style={styles.logo}
+            resizeMode='contain'
           />
-          
+
           <View style={styles.right} />
 
         </View>
+        <Image
+          source={{uri: game.thumb}}
+          style={styles.cover}
+          resizeMode='cover'
+        />
         <Heading
           title={game.title}
           subtitle='Conecte-se e comece a jogar.' />
