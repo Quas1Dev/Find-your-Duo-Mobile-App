@@ -1,30 +1,36 @@
 import { View } from 'react-native';
+import { AdsInfo } from '../../screens/Game';
 import { DuoInfo } from '../DuoInfo';
 
 import { styles } from './styles';
+interface Props {
+  data: AdsInfo;
+}
 
-export function DuoCard() {
+export function DuoCard({ data }: Props) {
+
   return (
     <View style={styles.container}>
       <DuoInfo
         label="Nome"
-        value=""
+        value={data.name}
       />
 
       <DuoInfo
         label="Tempo de Jogo"
-        value=""
+        value={`${data.yearsplaying} ano(s) jogando`}
       />
 
       <DuoInfo
         label="Disponibilidade"
-        value=""
+        value={`${data.weekdays.length} dias`}
       />
 
       <DuoInfo
-        label="Chamada de áudio"
-        value=""
+        label='Chamada de áudio?'
+        value={data.usevoicechannel? "Sim" : "Não"}
       />
+
     </View>
   );
 }
