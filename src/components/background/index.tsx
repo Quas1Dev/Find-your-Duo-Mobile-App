@@ -10,6 +10,7 @@ interface BackgroundProps {
 export function Background({ children }: BackgroundProps) {
     
     return (
+        // Renders a background to the image
         <ImageBackground
             source={backgroundImage}
             defaultSource={backgroundImage}
