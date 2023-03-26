@@ -129,7 +129,7 @@ export default function Game() {
         />
       </SafeAreaView>
       <DuoMatch
-        discord="fernando#1212"
+        discord={discordDuoSelected}
         onClose={() => setDiscordDuoSelected("")}
         visible={discordDuoSelected ? true : false}
       />
