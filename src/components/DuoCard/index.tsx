@@ -6,9 +6,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 interface Props {
   data: AdsInfo;
+  onConnect: () => void;
 }
 
-export function DuoCard({ data }: Props) {
+export function DuoCard({ data, onConnect }: Props) {
 
   return (
     <View style={styles.container}>
@@ -33,8 +34,8 @@ export function DuoCard({ data }: Props) {
         color={data.usevoicechannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT}
       />
 
-      <TouchableOpacity style={styles.button}>
-        <Ionicons name="ios-game-controller-outline" size={20} color={THEME.COLORS.TEXT}/>
+      <TouchableOpacity style={styles.button} onPress={onConnect}>
+        <Ionicons name="ios-game-controller-outline" size={20} color={THEME.COLORS.TEXT} />
         <Text style={styles.buttonTitle}>
           Conectar
         </Text>
