@@ -30,7 +30,7 @@ export interface AdsInfo {
 export default function Game() {
   // Initialize the state which stores the list of ads.
   const [ads, setAds] = useState<AdsInfo[]>([]);
-  const [discordDuoSelected, setDiscordDuoSelected] = useState('fernando#2545');
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('');
   // Return the route object that represents the current screen in the navigation stack.
   const route = useRoute();
   // Object with all parameters that were passed to the current route by the previous screen.
@@ -43,7 +43,16 @@ export default function Game() {
     navigator.goBack();
   }
 
-  
+  async function getDiscordUser(adsId: string) {
+    try {
+      const result = await api.get(`ads/${adsId}/discord`);
+      setDiscordDuoSelected(result.data.discord)
+    } catch (err: any) {
+      console.log(err.message)
+      console.log("Something went wrong!")
+    }
+  }
+
   // Request the ads related to the game from our API.
   useEffect(() => {
     async function findAdsByGameId() {
@@ -104,7 +113,9 @@ export default function Game() {
         <FlatList
           data={ads}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <DuoCard data={item} />}
+          renderItem={({ item }) => <DuoCard
+            data={item}
+            onConnect={() => getDiscordUser(item.id)} />}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={[ads.length > 0 ? styles.contentList : styles.emptyListContent]}
@@ -119,7 +130,7 @@ export default function Game() {
       </SafeAreaView>
       <DuoMatch
         discord="fernando#1212"
-        onClose ={()=>setDiscordDuoSelected("")}
+        onClose={() => setDiscordDuoSelected("")}
         visible={discordDuoSelected ? true : false}
       />
     </Background>
