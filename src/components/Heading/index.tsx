@@ -7,9 +7,9 @@ interface HeadingProps extends ViewProps {
     subtitle: string,
 }
 
-export function Heading({title, subtitle, ...rest }: HeadingProps) {
+export function Heading({ title, subtitle, ...rest }: HeadingProps) {
     return (
-        <View style={styles.container}>
+        <View style={styles.container} {...rest}>
             <Text style={styles.title}>
                 {title}
             </Text>
