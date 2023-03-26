@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { Background } from '../../components/background';
 import { Heading } from '../../components/Heading';
 import { DuoCard } from '../../components/DuoCard';
-
+import { DuoMatch } from '../../components/DuoMatch';
 import { THEME } from '../../theme';
 import { styles } from './styles';
 import logoImg from "../../assets/logo-nlw-esports.png";
@@ -30,6 +30,7 @@ export interface AdsInfo {
 export default function Game() {
   // Initialize the state which stores the list of ads.
   const [ads, setAds] = useState<AdsInfo[]>([]);
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('fernando#2545');
   // Return the route object that represents the current screen in the navigation stack.
   const route = useRoute();
   // Object with all parameters that were passed to the current route by the previous screen.
@@ -42,6 +43,7 @@ export default function Game() {
     navigator.goBack();
   }
 
+  
   // Request the ads related to the game from our API.
   useEffect(() => {
     async function findAdsByGameId() {
@@ -115,6 +117,11 @@ export default function Game() {
           )}
         />
       </SafeAreaView>
+      <DuoMatch
+        discord="fernando#1212"
+        onClose ={()=>setDiscordDuoSelected("")}
+        visible={discordDuoSelected ? true : false}
+      />
     </Background>
   );
 }
